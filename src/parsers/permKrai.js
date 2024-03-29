@@ -44,7 +44,7 @@ async function getPermKraiEvents(pagen) {
         }
     }
 
-    console.log(dataEvents);
+    return dataEvents;
 }
 
 module.exports = getPermKraiEvents;
