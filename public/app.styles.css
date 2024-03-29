@@ -25,6 +25,7 @@ html {
 /* <Colors> */
 :root {
     --primary: #1d91fc;
+    --primary-highlight: #63b4ff;
     --primary-hover: #2998ff;
     --primary-light: #3dabff;
     --primary-light-hover: #189bff;
@@ -110,6 +111,8 @@ header {
 @media screen and (max-width: 1200px) {
     .mainSection {
         flex-direction: column;
+        height: auto;
+        gap: 24px;
     }
 }
 /* <Preview section> */
@@ -150,18 +153,51 @@ header {
     -webkit-line-clamp: 2; /* Ограничение количества строк */
     -webkit-box-orient: vertical;
 }
-.previewDescription {
+.previewInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+.previewCategory {
     margin-left: 2px;
+    font-family: "Rubik", sans-serif;
     font-size: 18px;
-    overflow: hidden; /* Скрытие избыточного текста */
-    text-overflow: ellipsis; /* Добавление троеточия в конце обрезанного текста */
-    display: -webkit-box; /* Для поддержки веб-кит браузеров */
-    -webkit-line-clamp: 7; /* Ограничение количества строк */
-    -webkit-box-orient: vertical;
+    font-weight: 500;
+    color: #666666;
+}
+.previewDate {
+    margin-right: 2px;
+    font-family: "Rubik", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #666666;
+}
+.buttonsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.detailsButton {
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: "Rubik", sans-serif;
+    color: #ffffff;
+    width: 100%;
+    background-color: #252525;
+    border: 3px solid #252525;
+    padding: 12px 24px;
+    border-radius: 12px;
+    transition: .33s;
+}
+.detailsButton:hover {
+    background-color: #292929;
 }
 .visitButton {
     cursor: pointer;
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 500;
     font-family: "Rubik", sans-serif;
     color: #ffffff;
@@ -178,6 +214,7 @@ header {
 @media screen and (max-width: 1200px) {
     .previewPart {
         width: 100%;
+        height: auto;
     }
     body {
         overflow-x: hidden;
@@ -185,9 +222,122 @@ header {
     }
 }
 /* </Preview section> */
+
+
 /* <Activities List> */
 .activitiesList {
     width: calc(50% - 12px);
     height: calc((100vh - 86px - 40px) - 64px);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.calendarTitle {
+    font-size: 26px;
+}
+.calendar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 12px;
+}
+.selectDate {
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 42px;
+    height: 42px;
+    padding: 8px;
+    border-radius: 64px;
+    transition: .24s;
+}
+.selectDate:hover {
+    background-color: #dadada;
+}
+.selectDate.selected {
+    border: 2px solid #63b4ff;
+}
+.dayActivities {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    border-radius: 12px;
+    background-color: #dadada;
+    overflow-y: auto;
+    /* scrollbar-width: 6px;
+    scrollbar-color: var(--primary-hover) #dadada; */
+}
+.activityCard {
+    width: 100%;
+    padding: 12px 12px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: #ffffff;
+    border-radius: 12px;
+}
+.activityCard .topInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.cardCategory {
+    font-family: "Rubik", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666666;
+}
+.cardLink {
+    color: #252525;
+    cursor: pointer;
+    padding: 6px 7px 5px;
+    border-radius: 6px;
+    border: 3px solid #dadada;
+    transition: .33s;
+}
+.cardLink:hover {
+    transform: scale(1.02);
+    border: 3px solid var(--primary-highlight);
+}
+.activityCard .bottomInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.cardDate {
+    margin-right: 3px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.dayActivities::-webkit-scrollbar {
+  width: 7px;
+}
+.dayActivities::-webkit-scrollbar-track {
+  background: #dadada;
+}
+.dayActivities::-webkit-scrollbar-thumb {
+  background: var(--primary-hover);
+  border-radius: 4px;
+}
+@media screen and (max-width: 1200px) {
+    .activitiesList {
+        width: 100%;
+        height: 500px;
+    }
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
 }
 /* </Activities List> */
