@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    text-decoration: none;
+}
+body {
+    color: #252525;
+    min-height: 100vh;
+    font-family: "Roboto", sans-serif;
+    background-color: #dadada;
+    overflow: hidden;
+}
+a:hover {
+    text-decoration: none;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* <Colors> */
+:root {
+    --primary: #1d91fc;
+    --primary-hover: #2998ff;
+    --primary-light: #3dabff;
+    --primary-light-hover: #189bff;
+}
+/* </Colors> */
+
+
+/* <Header> */
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 32px;
+    border-bottom: 2px solid #dfdfdf;
+    background-color: #ffffff;
+}
+.navBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+.navLink {
+    font-family: "inter", sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #666666;
+    transition: .33s;
+    border-radius: 12px;
+}
+.navLink:hover {
+    color: #252525;
+}
+.navLink.selected {
+    color: var(--primary-light);
+}
+.navLink.selected:hover {
+    color: var(--primary-light-hover);
+}
+.navButton {
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: var(--primary);
+    border: 3px solid var(--primary-hover);
+    border-radius: 14px;
+    padding: 8px 10px;
+    transition: .28s;
+}
+.navButton:hover {
+    background-color: var(--primary-hover);
+}
+.profileButton {
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: var(--primary);
+    border: 3px solid var(--primary-hover);
+    border-radius: 14px;
+    padding: 8px 12px;
+    transition: .28s;
+}
+.profileButton:hover {
+    background-color: var(--primary-hover);
+}
+/* </Header> */
+
+
+.mainSection {
+    margin: 20px 32px;
+    background-color: #ffffff;
+    height: calc(100vh - 86px - 40px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 32px;
+    gap: 24px;
+    border-radius: 16px;
+}
+@media screen and (max-width: 1200px) {
+    .mainSection {
+        flex-direction: column;
+    }
+}
+/* <Preview section> */
+.previewPart {
+    width: calc(50% - 12px);
+    height: calc((100vh - 86px - 40px) - 64px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px; 
+}
+.previewTop {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.previewBlock {
+    background-size: cover;
+    background-position: center center;
+    background-image: url(/public/assets/fillerImage.png);
+    position:relative; 
+    background-color: #252525;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+}
+.previewInformation {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.previewTitle {
+    margin-left: 2px;
+    font-size: 26px;
+    overflow: hidden; /* Скрытие избыточного текста */
+    text-overflow: ellipsis; /* Добавление троеточия в конце обрезанного текста */
+    display: -webkit-box; /* Для поддержки веб-кит браузеров */
+    -webkit-line-clamp: 2; /* Ограничение количества строк */
+    -webkit-box-orient: vertical;
+}
+.previewDescription {
+    margin-left: 2px;
+    font-size: 18px;
+    overflow: hidden; /* Скрытие избыточного текста */
+    text-overflow: ellipsis; /* Добавление троеточия в конце обрезанного текста */
+    display: -webkit-box; /* Для поддержки веб-кит браузеров */
+    -webkit-line-clamp: 7; /* Ограничение количества строк */
+    -webkit-box-orient: vertical;
+}
+.visitButton {
+    cursor: pointer;
+    font-size: 21px;
+    font-weight: 500;
+    font-family: "Rubik", sans-serif;
+    color: #ffffff;
+    width: 100%;
+    background-color: var(--primary);
+    border: 3px solid var(--primary-hover);
+    padding: 12px 24px;
+    border-radius: 12px;
+    transition: .33s;
+}
+.visitButton:hover {
+    background-color: var(--primary-hover);
+}
+@media screen and (max-width: 1200px) {
+    .previewPart {
+        width: 100%;
+    }
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+}
+/* </Preview section> */
+/* <Activities List> */
+.activitiesList {
+    width: calc(50% - 12px);
+    height: calc((100vh - 86px - 40px) - 64px);
+}
+/* </Activities List> */
