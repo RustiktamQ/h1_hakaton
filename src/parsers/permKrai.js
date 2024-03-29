@@ -2,11 +2,11 @@ const getHtml = require('../libs/getHtml.js');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
-
 async function getPermKraiEvents(pagen) {
     const html = await getHtml(`https://www.permkrai.ru/ajax/events/index.php?PAGEN_1=${pagen}`);
     const dom = new JSDOM(html);
     const document = dom.window.document;
+    const site = 'https://www.permkrai.ru';
     let regex = /url\((.*?)\)/;
 
     // collections
@@ -26,11 +26,11 @@ async function getPermKraiEvents(pagen) {
     });
 
     const images = Array.from(imgCollection).map(el => {
-        return 'https://www.permkrai.ru' + el.style['background-image'].match(regex)[1]
+        return site + el.style['background-image'].match(regex)[1]
     });
 
     const urls = Array.from(urlCollection).map(el => {
-        return 'https://www.permkrai.ru' + el.href
+        return site + el.href
     });
 
     let dataEvents = [];
