@@ -2,6 +2,11 @@ const getHtml = require('../libs/getHtml.js');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
+/**
+ * парсер с сайта https://www.permkrai.ru
+ * @param {string} pagen - страница, сначала самые новейшие анонсы
+ * @returns {Object[]} массив обьектов событий
+ */
 async function getPermKraiEvents(pagen) {
     const html = await getHtml(`https://www.permkrai.ru/ajax/events/index.php?PAGEN_1=${pagen}`);
     const dom = new JSDOM(html);
@@ -46,5 +51,7 @@ async function getPermKraiEvents(pagen) {
 
     return dataEvents;
 }
+
+// getPermKraiEvents(1);
 
 module.exports = getPermKraiEvents;

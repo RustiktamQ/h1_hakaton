@@ -2,13 +2,26 @@ const getHtml = require('../libs/getHtml.js');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
-async function getTeatrTeatrEvents(month) {
-    const html = await getHtml(`https://teatr-teatr.com/afisha/?month=${month}.2024`);
+/**
+ * парсер с сайта https://teatr-teatr.com
+ * @param {string} day - строковый день месяца (2, 3)
+ * @param {string} month - строковый номер месяца (02, 03)
+ * @returns {Object[]} массив обьектов событий
+ */
+async function getTeatrTeatrEvents(day, month) {
+    let html;
+    if (day == 'all') {
+        html = await getHtml(`https://teatr-teatr.com/afisha/?month=${month}.2024`);
+    } else {
+        html = await getHtml(`https://teatr-teatr.com/afisha/?month=${month}.2024&day=${day}`);
+    }
+
     const dom = new JSDOM(html);
     const document = dom.window.document;
     const site = 'https://teatr-teatr.com';
 
     const titleCollection = document.querySelectorAll('.poster-card__title > a');
+    // const categoryCollection = document.querySelectorAll('.title');
     const dateCollection = document.querySelectorAll('.poster-card__date > .poster-card__day > .poster-card__number');
     const imgCollection = document.querySelectorAll('.poster-card__image > img');
     const urlCollection = document.querySelectorAll('.poster-card__title > a');
@@ -29,10 +42,9 @@ async function getTeatrTeatrEvents(month) {
         }
     }
 
-    console.log(dataEvents);
-
+    return dataEvents;
 }
 
-// getTeatrTeatrEvents('03');
+// getTeatrTeatrEvents('03', 'all');
 
 module.exports = getTeatrTeatrEvents;
