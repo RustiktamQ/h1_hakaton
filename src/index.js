@@ -1,11 +1,13 @@
 const express = require('express');
 const updater = require('./libs/updater.js');
-const router = require('./router/index.js');
+const eventRouter = require('./routers/index.js');
+const userRouter = require('./routers/user.js')
 
 updater.startUpdaterPerDay();
 
 const app = express();
-app.use('/v1', router);
+app.use('/v1', eventRouter);
+app.use('/v1/user', userRouter);
 app.use(express.static('../public'));
 
 app.use('/', (_, res) => {
