@@ -352,9 +352,11 @@ header {
     padding: 8px;
     border-radius: 64px;
     transition: .24s;
+    border: 2px solid #ffffff;
 }
 .selectDate:hover {
     background-color: #dadada;
+    border: 2px solid #dadada;
 }
 .selectDate.selected {
     border: 2px solid #63b4ff;

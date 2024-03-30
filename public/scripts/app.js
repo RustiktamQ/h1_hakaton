@@ -16,6 +16,17 @@ function sendGetRequest(number) {
         });
 }
 
+function selectCircle(selectedIndex) {
+    let circles = document.querySelectorAll(".selectDate");
+    circles.forEach((circle, index) => {
+        if (index === selectedIndex - 1) {
+            circle.classList.add("selected");
+        } else {
+            circle.classList.remove("selected");
+        }
+    });
+}
+
 let currentDate = new Date();
 let currentMonth = currentDate.getMonth();
 let currentYear = currentDate.getFullYear();
@@ -34,6 +45,7 @@ for (let i = 1; i < numberOfDays; i++) {
     container.appendChild(circle);
 
     circle.addEventListener("click", function() {
+        selectCircle(i);
         sendGetRequest(i);
     });
 }
