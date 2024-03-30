@@ -1,9 +1,9 @@
 const mysql = require('mysql2');
 const config = require('../config.js');
 const express = require('express');
-const router = express.Router();
+const eventRouter = express.Router();
 
-router.get('/getEvent/all', async (_, res) => {
+eventRouter.get('/getEvent/all', async (_, res) => {
     const connection = mysql.createConnection({
         host: config.host,
         user: config.user,
@@ -17,7 +17,7 @@ router.get('/getEvent/all', async (_, res) => {
     connection.end();
 });
 
-router.get('/getDay/:date', async (req, res) => {
+eventRouter.get('/getDay/:date', async (req, res) => {
   const connection = mysql.createConnection({
     host: config.host,
     user: config.user,
@@ -33,7 +33,7 @@ router.get('/getDay/:date', async (req, res) => {
   connection.end();
 });
 
-router.get('/getExpired', async (req, res) => {
+eventRouter.get('/getExpired', async (req, res) => {
   const connection = mysql.createConnection({
     host: config.host,
     user: config.user,
@@ -55,4 +55,4 @@ router.get('/getExpired', async (req, res) => {
   connection.end();
 });
 
-module.exports = router;
+module.exports = eventRouter;
