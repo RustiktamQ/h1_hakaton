@@ -21,6 +21,7 @@ userRouter.post('/register', urlencodedParser, async (req, res) => {
     let userResCheck = (await connection.query(sqlCheck, [username, password]))[0];
 
     if (userResCheck.length > 0) {
+        res.cookie('mess', '{"message": "Такой пользователь уже зарегистрирован!", "code": -1}');
         res.redirect('/register');
         //res.status(200).json({"message": "Такой пользователь уже зарегистрирован!", "code": -1});
 
@@ -54,6 +55,7 @@ userRouter.post('/login', urlencodedParser, async (req, res) => {
 
     if (!userRes) {
         res.redirect('/login');
+        res.cookie('mess', '{"message": "Такой пользователь не найден!", "code": -2}');
         //res.status(400).json({"message": "Такой пользователь не найден!", "code": -2});
 
         return false;
