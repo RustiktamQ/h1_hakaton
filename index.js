@@ -8,7 +8,7 @@ updater.startUpdaterPerDay();
 const app = express();
 app.use('/v1', eventRouter);
 app.use('/v1/user', userRouter);
-app.use(express.static('../public'));
+app.use(express.static('public'));
 
 app.use('/', (_, res) => {
     res.send('ok!');
