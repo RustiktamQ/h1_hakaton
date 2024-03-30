@@ -12,12 +12,4 @@ connection.query("SELECT * FROM contacts", (err, res) => {
     console.log(res);
 });
 
-let user = ["Tom", 29];
-let sql = "INSERT INTO users(name, age) VALUES(?, ?)";
- 
-connection.query(sql, user, (err, res) => {
-    if(err) console.log(err);
-    else console.log("Данные добавлены");
-});
-
 connection.end();
