@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    text-decoration: none;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #252525;
+    min-height: 100vh;
+    font-family: "Roboto", sans-serif;
+    background-color: #dadada;
+    overflow: hidden;
+}
+a:hover {
+    text-decoration: none;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+/* <Colors> */
+:root {
+    --primary: #1d91fc;
+    --primary-highlight: #63b4ff;
+    --primary-hover: #2998ff;
+    --primary-light: #3dabff;
+    --primary-light-hover: #189bff;
+}
+/* </Colors> */
+
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  padding: 36px 24px;
+  border-radius: 24px;
+  background-color: #ffffff;
+}
+.logo {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 12px;
+  width: 48px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 12px;
+  background-color: var(--primary);
+  border: 2px solid var(--primary-hover);
+  transition: .26s;
+}
+.logo:hover {
+  background-color: var(--primary-hover);
+}
+.formTitle {
+  font-size: 28px;
+  font-weight: 500;
+}
+.inputs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.authorizationInput {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 18px;
+  color: #252525;
+  border: 3px solid #dadada;
+  border-radius: 12px;
+  outline: none;
+  transition: .24s;
+}
+.authorizationInput:focus {
+  border: 3px solid var(--primary);
+}
+.submitButton {
+  cursor: pointer;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 19px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  background-color: var(--primary);
+  border: 3px solid var(--primary-hover);
+  transition: .26s;
+}
+.submitButton:hover {
+  background-color: var(--primary-hover);
+}
+.submitButton:disabled {
+  background-color: var(--primary-highlight);
+  border: 3px solid var(--primary-light);
+}
+.errorsOutput {
+  width: 100%;
+  font-size: 13px;
+  font-weight: 500;
+  color: #ff1818;
+  transition: .26s;
+}
+
+@media screen and (max-width:575px) {
+  .loginForm {
+    max-width: 100%;
+    height: 100vh;
+    justify-content: center;
+  }
+}

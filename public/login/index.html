@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лента Активностей | Вход</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="login.styles.css">
+</head>
+<body>
+    
+    <form action="" method="POST" class="loginForm" data-aos="zoom-in">
+        <a href="/" class="logo">
+            <i class='bx bxs-home'></i>
+        </a>
+        <h2 class="formTitle">Вход в аккаунт</h2>
+        <div class="inputs">
+            <input type="text" minlength="4" placeholder="Логин..." class="authorizationInput" oninput="updateButtonState()" id="login" name="username" required>
+            <input type="password" minlength="6" placeholder="Пароль..." class="authorizationInput" oninput="updateButtonState()" id="password" name="password" required>
+        </div>
+        <div class="errorsOutput" id="errorsOutput"></div>
+        <button type="submit" class="submitButton" id="submitButton" disabled>Войти</button>
+    </form>
+    
+    <script>
+        let submitButton = document.getElementById('submitButton');
+        let loginInput = document.getElementById('login');
+        let passwordInput = document.getElementById('password');
+        let output = document.getElementById('errorsOutput');
+
+        function checkLogin() {
+            let loginValue = loginInput.value.trim();
+        
+            return loginValue.length >= 4;
+        }
+
+        function checkPassword() {
+            let passwordValue = passwordInput.value.trim();
+        
+            return passwordValue.length >= 6;
+        }
+
+        function updateButtonState() {
+            if (checkLogin() && checkPassword()) {
+                submitButton.removeAttribute('disabled');
+            } else {
+                submitButton.setAttribute('disabled', 'disabled');
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+</body>
+</html>
