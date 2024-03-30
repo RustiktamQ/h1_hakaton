@@ -293,6 +293,10 @@ header {
 .visitButton:hover {
     background-color: var(--primary-hover);
 }
+.visitButton:disabled {
+    background-color: var(--primary-highlight);
+    border: 3px solid var(--primary-light);
+}
 @media screen and (max-width: 1200px) {
     .previewPart {
         width: 100%;

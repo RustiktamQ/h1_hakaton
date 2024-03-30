@@ -1,5 +1,5 @@
 function getRussianMonthName(monthNumber) {
-    const monthNames = [
+    let monthNames = [
       "Января",
       "Февраля",
       "Марта",
@@ -14,7 +14,7 @@ function getRussianMonthName(monthNumber) {
       "Декабря",
     ];
   
-    const monthIndex = parseInt(monthNumber, 10) - 1;
+    let monthIndex = parseInt(monthNumber, 10) - 1;
   
     if (monthIndex >= 0 && monthIndex < 12) {
       return monthNames[monthIndex];
@@ -31,12 +31,13 @@ function parseDate(date) {
     return date;
 }
 
-function showPreview(banner, title, category, date, url) {
+function showPreview(banner, title, category, date, url, id) {
     let bannerWindow = document.getElementById("previewBanner");
     let titlePlace = document.getElementById("previewTitle");
     let categoryPlace = document.getElementById("previewCategory");
     let datePlace = document.getElementById("previewDate");
     let urlPlace = document.getElementById("previewLink");
+    let idPlace = document.getElementById("previewId");
 
     if (banner.includes("permkrai.ru")) {
         banner = "/assets/fillerImage.png";
@@ -46,12 +47,13 @@ function showPreview(banner, title, category, date, url) {
     categoryPlace.innerText = category;
     datePlace.innerText = date;
     urlPlace.href = url;
+    idPlace.innerText = id;
 }   
 
 async function sendGetRequest(number) {
     let container = document.getElementById("cardsList");
 
-    const date = new Date();
+    let date = new Date();
     let month = ('0' + (date.getMonth() + 1)).slice(-2);
     let year = date.getFullYear();
     let url = `/v1/getDay/${number}.${month}.${year}`;
@@ -77,11 +79,11 @@ async function sendGetRequest(number) {
             container.appendChild(card);
 
             if (i == 0) {
-                showPreview(data[i].image, data[i].title, data[i].category, parsedDate, data[i].url);
+                showPreview(data[i].image, data[i].title, data[i].category, parsedDate, data[i].url, data[i].id);
             }
 
             card.addEventListener("click", function() {
-                showPreview(data[i].image, data[i].title, data[i].category, parsedDate, data[i].url);
+                showPreview(data[i].image, data[i].title, data[i].category, parsedDate, data[i].url, data[i].id);
             });
         }
     } else {
@@ -113,7 +115,7 @@ for (let i = 1; i < numberOfDays; i++) {
     let circle = document.createElement("div");
     circle.classList.add("selectDate");
 
-    const today = new Date();
+    let today = new Date();
     let day = today.getDate()
 
     if (i == day) {
@@ -128,3 +130,83 @@ for (let i = 1; i < numberOfDays; i++) {
         sendGetRequest(i);
     });
 }
+
+
+function getCookie(cookieName) {
+    let name = cookieName + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let cookieArray = decodedCookie.split(';');
+
+    for(let i = 0; i < cookieArray.length; i++) {
+        let cookie = cookieArray[i];
+        while (cookie.charAt(0) === ' ') {
+            cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf(name) === 0) {
+            return cookie.substring(name.length, cookie.length);
+        }
+    }
+    return "";
+}
+function cookieExists(cookieName) {
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let cookieArray = decodedCookie.split(';');
+
+    for(let i = 0; i < cookieArray.length; i++) {
+        let cookie = cookieArray[i];
+        while (cookie.charAt(0) === ' ') {
+            cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf(cookieName + "=") === 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+async function checkToken(token) {
+    let url = `/v1/user/checkToken/${token}`;
+    let result = await fetch(url);
+    let data = await result.json();
+    
+    return data.code == 1;
+}
+
+
+async function wantToVisit(id, token) {
+    let url = `/v1/visit/${id}`;
+
+    let formData = new URLSearchParams();
+    formData.append('token', token);
+
+    let result = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: formData
+    })
+    let data = await result.json();
+
+    return data;
+}
+
+async function disableVisit() {
+    let button = document.getElementById("visitButton");
+    if (cookieExists("token")) {
+        if ((await checkToken(getCookie("token")))) {
+            button.removeAttribute("disabled");
+        } else {
+            button.setAttribute('disabled', 'disabled');
+        }
+    } else {
+        button.setAttribute('disabled', 'disabled');
+    }
+
+    button.addEventListener("click", async function() {
+        let previewId = document.getElementById("previewId").innerText;
+        await wantToVisit(previewId ,getCookie("token"));
+    });
+}
+
+disableVisit();
