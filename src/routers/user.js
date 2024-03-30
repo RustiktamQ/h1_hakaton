@@ -25,10 +25,12 @@ userRouter.post('/register', urlencodedParser, async (req, res) => {
         return false;
     }
 
-    const sql = "INSERT INTO users(username, password) VALUES (?, ?)";
-    let userRes = await connection.query(sql, [username, password]);
+    const token = md5(username + password);
+
+    const sql = "INSERT INTO users(username, password, token) VALUES (?, ?, ?)";
+    let userRes = await connection.query(sql, [username, password, token]);
     
-    res.status(200).json({"username": username, "password": password});
+    res.status(200).json({"username": username, "password": password, "token": token});
     connection.end();
 });
 
@@ -46,7 +48,7 @@ userRouter.post('/login', urlencodedParser, async (req, res) => {
     const sql = "SELECT * FROM `users` WHERE username = ? AND password = ?";
     let userRes = (await connection.query(sql, [username, password]))[0][0];
 
-    res.status(200).json({"cookie": md5(userRes.username + userRes.password)});
+    res.status(200).json({"token": md5(userRes.username + userRes.password)});
 });
 
 module.exports = userRouter;
