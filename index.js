@@ -4,6 +4,7 @@ const eventRouter = require('./routers/index.js');
 const userRouter = require('./routers/user.js')
 
 updater.startUpdaterPerDay();
+// updater.updater();
 
 const app = express();
 app.use('/v1', eventRouter);
