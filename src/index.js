@@ -6,6 +6,7 @@ updater.startUpdaterPerDay();
 
 const app = express();
 app.use('/v1', router);
+app.use(express.static('../public'));
 
 app.use('/', (_, res) => {
     res.send('ok!');
