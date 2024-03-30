@@ -11,7 +11,7 @@
 </head>
 <body>
     
-    <form action="" method="POST" class="loginForm" data-aos="zoom-in">
+    <form action="/v1/user/register" method="POST" class="loginForm" data-aos="zoom-in">
         <a href="/" class="logo">
             <i class='bx bxs-home'></i>
         </a>
@@ -19,7 +19,7 @@
         <div class="inputs">
             <input type="text" minlength="4" placeholder="Логин..." class="authorizationInput" oninput="updateButtonState()" id="login" name="username" required>
             <input type="password" minlength="6" placeholder="Пароль..." class="authorizationInput" oninput="updateButtonState()" id="fpassword" name="password" required>
-            <input type="password" minlength="6" placeholder="Повторите пароль..." class="authorizationInput" oninput="updateButtonState()" id="spassword" name="password" required>
+            <input type="password" minlength="6" placeholder="Повторите пароль..." class="authorizationInput" oninput="updateButtonState()" id="spassword" required>
         </div>
         <div class="errorsOutput" id="errorsOutput"></div>
         <button type="submit" class="submitButton" id="submitButton" disabled>Зарегистрироваться</button>
