@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лента Активностей | Рейтинг</title>
+    <title>Лента Активностей | Профиль</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="rating.styles.css">
+    <link rel="stylesheet" href="profile.styles.css">
     <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
 </head>
 <body>
@@ -15,11 +15,10 @@
             <a href="/" class="navButton"><i class='bx bxs-home' ></i></a>
             <a href="/" class="navLink">Активности</a>
             <a href="/history/" class="navLink">История</a>
-            <a href="/rating/" class="navLink selected">Рейтинг</a>
+            <a href="/rating/" class="navLink">Рейтинг</a>
         </div>
-        <div class="navBar" id="mainHeaderButtons">
-            <a href="/login/" class="navLink">Войти</a>
-            <a href="/register/" class="profileButton">Регистрация</a>
+        <div class="navBar">
+            <a href="/profile/" class="profileButton">Профиль</a>
             <button class="mobileNavButton" onclick="openMobNav()"><i class='bx bx-menu'></i></button>
         </div>
     </header>
@@ -27,11 +26,10 @@
         <div class="navBar">
             <a href="/" class="mobNavLink">Активности</a>
             <a href="/history/" class="mobNavLink">История</a>
-            <a href="/rating/" class="mobNavLink selected">Рейтинг</a>
+            <a href="/rating/" class="mobNavLink">Рейтинг</a>
         </div>
-        <div class="navBar" id="mobileHeaderButtons">
-            <a href="/login/" class="mobNavLink">Войти</a>
-            <a href="/register/" class="mobProfileButton">Регистрация</a>
+        <div class="navBar">
+            <a href="/profile/" class="mobProfileButton">Профиль</a>
         </div>
     </div>
     <script>
@@ -44,8 +42,8 @@
     <section id="main" class="mainSection" data-aos="fade-up">
         <div class="topPart">
             <div class="textBlock">
-                <img src="/assets/bear.png" alt="logo">
-                <h2 class="pageTitle">Рейтинг активностей</h2>
+                <i class='bx bxs-user-circle'></i>
+                <h2 class="pageTitle">Профиль <span id="userName">Писька</span></h2>
             </div>
             <div class="gradient-bg">
                 <svg xmlns="http://www.w3.org/2000/svg">
@@ -68,12 +66,23 @@
               </div>
         </div>
         <div class="mainPart">
-            
+            <div class="activitiesList" id="cardsList">
+                <div class="activityCard">
+                    <div class="topInfo">
+                        <div class="cardCategory">Образовательная программа</div>
+                        <a href="#" class="cardLink"><i class='bx bx-link-external'></i></a>
+                    </div>
+                    <div class="bottomInfo">
+                        <div class="cardTitle">Финансовая грамотность для самозанятых</div>
+                        <div class="cardDate">12 Января 2024</div>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     </section>
 
-
-    <script src="../scripts/buttons.js"></script>
+    <script src="../scripts/profile.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();

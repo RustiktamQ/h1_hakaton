@@ -17,7 +17,7 @@
             <a href="/history/" class="navLink">История</a>
             <a href="/rating/" class="navLink">Рейтинг</a>
         </div>
-        <div class="navBar">
+        <div class="navBar" id="mainHeaderButtons">
             <a href="/login/" class="navLink">Войти</a>
             <a href="/register/" class="profileButton">Регистрация</a>
             <button class="mobileNavButton" onclick="openMobNav()"><i class='bx bx-menu'></i></button>
@@ -29,7 +29,7 @@
             <a href="/history/" class="mobNavLink">История</a>
             <a href="/rating/" class="mobNavLink">Рейтинг</a>
         </div>
-        <div class="navBar">
+        <div class="navBar" id="mobileHeaderButtons">
             <a href="/login/" class="mobNavLink">Войти</a>
             <a href="/register/" class="mobProfileButton">Регистрация</a>
         </div>
@@ -68,6 +68,7 @@
     </section>
 
     <script src="scripts/app.js"></script>
+    <script src="scripts/buttons.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();

@@ -74,7 +74,7 @@
 
         function checkLogin() {
             let loginValue = loginInput.value.trim();
-            let loginRegex = /^[a-zA-Z]{4,}$/;
+            let loginRegex = /^[a-zA-Zа-яА-Я]{4,}$/;
         
             return loginRegex.test(loginValue);
         }
@@ -94,7 +94,7 @@
             }
 
             if (!checkLogin() && (loginInput.value.trim().length > 3)) {
-                output.innerHTML = 'Логин должен содержать только латинские буквы';
+                output.innerHTML = 'Логин не должен содержать спецсимволов и цифр';
             } else {
                 output.innerHTML = '';
             }
