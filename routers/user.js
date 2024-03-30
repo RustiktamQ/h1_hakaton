@@ -56,7 +56,7 @@ userRouter.post('/login', urlencodedParser, async (req, res) => {
     let userRes = (await connection.query(sql, [username, password]))[0][0];
 
     if (!userRes) {
-        res.cookie('mess', '{"message": "Такой пользователь не найден!", "code": -2}', { maxAge: 2000 });
+        res.cookie('mess', '{"message": "Неверный логин или пароль!", "code": -2}', { maxAge: 2000 });
         res.redirect('/login');
         //res.status(400).json({"message": "Такой пользователь не найден!", "code": -2});
 
