@@ -101,4 +101,26 @@ eventRouter.post('/visit/:id', urlencodedParser, async (req, res) => {
   res.status(200).json({"message": "Вы успешно подписались на событие!", "code": 1});
 });
 
+eventRouter.get('/getEvents/:manyId', async (req, res) => {
+  const connection = mysql.createConnection({
+    host: config.host,
+    user: config.user,
+    database: config.database,
+    password: config.password,
+  }).promise();
+
+  const manyId = req.params.manyId.split('&');
+  const sql = "SELECT * FROM events WHERE id = ?";
+
+  let visitedEvents = [];
+
+  for (let i = 0; i < manyId.length; i++) {
+    let result = (await connection.query(sql, [manyId[i]]))[0];
+    visitedEvents.push(result);
+  }
+
+  const visitedEventsF = visitedEvents.flat();
+  res.status(200).json(visitedEventsF);
+});
+
 module.exports = eventRouter;
