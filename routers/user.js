@@ -22,6 +22,11 @@ userRouter.post('/register', urlencodedParser, async (req, res) => {
 
     if (userResCheck.length > 0) {
         res.status(200).json({"message": "Такой пользователь уже зарегистрирован!", "code": -1});
+
+        setTimeout(() => {
+            res.redirect('/register');
+        }, 2500);
+
         return false;
     }
 
@@ -47,6 +52,16 @@ userRouter.post('/login', urlencodedParser, async (req, res) => {
       
     const sql = "SELECT * FROM `users` WHERE username = ? AND password = ?";
     let userRes = (await connection.query(sql, [username, password]))[0][0];
+
+    if (!userRes) {
+        res.status(400).json({"message": "Такой пользователь не найден!", "code": -2});
+
+        setTimeout(() => {
+            res.redirect('/login');
+        }, 2500);
+
+        return false;
+    }
 
     res.status(200).json({"token": md5(userRes.username + userRes.password)});
 });

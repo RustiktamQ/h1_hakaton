@@ -35,7 +35,7 @@ async function getTeatrTeatrEvents(day, month) {
     for(let i = 0; i < titles.length; i++) {
         dataEvents[i] = {
             title: titles[i],
-            category: 'teatr_teatr',
+            category: 'Премьера',
             date: dates[i],
             image: images[i],
             url: urls[i]

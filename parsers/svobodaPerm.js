@@ -36,7 +36,7 @@ async function getSvobodaPermEvents() {
     for(let i = 0; i < titles.length; i++) {
         dataEvents[i] = {
             title: titles[i],
-            category: 'svoboda_perm',
+            category: 'Концерт',
             date: days[i] + '.' + convertedMonths[months[i]],
             image: images[i],
             url: urls[i]
