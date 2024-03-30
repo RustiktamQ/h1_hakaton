@@ -91,4 +91,25 @@ userRouter.get('/getInfo/:token', async (req, res) => {
     res.status(200).json({"username": userRes.username, "visited_events": userRes.visited_events}); 
 });
 
+userRouter.get('/checkToken/:token', async (req, res) => {
+    const connection = mysql.createConnection({
+        host: config.host,
+        user: config.user,
+        database: config.database,
+        password: config.password,
+    }).promise();
+
+    const token = req.params.token;
+    
+    const sql = "SELECT * FROM users WHERE token = ?";
+    let userRes = (await connection.query(sql, [token]))[0][0];
+
+    if (!userRes) {
+        res.status(200).json({"message": "Токен не действителен!", "code": -2})
+        return false;
+    }
+
+    res.status(200).json({"message": "token aviable!", "code": 1}); 
+});
+
 module.exports = userRouter;
