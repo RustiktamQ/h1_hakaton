@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лента Активностей | Регистрация</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="register.styles.css">
+</head>
+<body>
+    
+    <form action="" method="POST" class="loginForm" data-aos="zoom-in">
+        <a href="/" class="logo">
+            <i class='bx bxs-home'></i>
+        </a>
+        <h2 class="formTitle">Регистрация</h2>
+        <div class="inputs">
+            <input type="text" minlength="4" placeholder="Логин..." class="authorizationInput" oninput="updateButtonState()" id="login" name="username" required>
+            <input type="password" minlength="6" placeholder="Пароль..." class="authorizationInput" oninput="updateButtonState()" id="fpassword" name="password" required>
+            <input type="password" minlength="6" placeholder="Повторите пароль..." class="authorizationInput" oninput="updateButtonState()" id="spassword" name="password" required>
+        </div>
+        <div class="errorsOutput" id="errorsOutput"></div>
+        <button type="submit" class="submitButton" id="submitButton" disabled>Зарегистрироваться</button>
+    </form>
+    
+
+    <script>
+        let submitButton = document.getElementById('submitButton');
+        let loginInput = document.getElementById('login');
+        let fpasswordInput = document.getElementById('fpassword');
+        let spasswordInput = document.getElementById('spassword');
+        let output = document.getElementById('errorsOutput');
+
+        function checkLogin() {
+            let loginValue = loginInput.value.trim();
+            let loginRegex = /^[a-zA-Z]{4,}$/;
+        
+            return loginRegex.test(loginValue);
+        }
+
+        function checkPassword() {
+            let fpasswordValue = fpasswordInput.value.trim();
+            let spasswordValue = spasswordInput.value.trim();
+        
+            return ((fpasswordValue.length >= 6) && (fpasswordValue == spasswordValue));
+        }
+
+        function updateButtonState() {
+            if (checkLogin() && checkPassword()) {
+                submitButton.removeAttribute('disabled');
+            } else {
+                submitButton.setAttribute('disabled', 'disabled');
+            }
+
+            if (!checkLogin() && (loginInput.value.trim().length > 3)) {
+                output.innerHTML = 'Логин должен содержать только латинские буквы';
+            } else {
+                output.innerHTML = '';
+            }
+
+            if (!checkPassword() && (fpasswordInput.value.trim().length >= 6)) {
+                output.innerHTML = 'Пароли должны совпадать';
+            } else {
+                output.innerHTML = '';
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+</body>
+</html>
