@@ -1,13 +1,14 @@
-const mysql = require("mysql2");
+const mysql = require('mysql2');
+const config = require('../config.js');
 const express = require('express');
 const router = express.Router();
 
 router.get('/getEvent/all', async (_, res) => {
     const connection = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        database: "event_lents",
-        password: ''
+        host: config.host,
+        user: config.user,
+        database: config.database,
+        password: config.password,
       }).promise();
       
     const allEvents = (await connection.query("SELECT * FROM events"))[0];
@@ -18,10 +19,10 @@ router.get('/getEvent/all', async (_, res) => {
 
 router.get('/getDay/:date', async (req, res) => {
   const connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    database: "event_lents",
-    password: ''
+    host: config.host,
+    user: config.user,
+    database: config.database,
+    password: config.password,
   }).promise();
 
   const date = req.params.date;
@@ -34,10 +35,10 @@ router.get('/getDay/:date', async (req, res) => {
 
 router.get('/getExpired', async (req, res) => {
   const connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    database: "event_lents",
-    password: ''
+    host: config.host,
+    user: config.user,
+    database: config.database,
+    password: config.password,
   }).promise();
 
   const currentDate = new Date();

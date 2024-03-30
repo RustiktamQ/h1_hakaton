@@ -1,13 +1,14 @@
 const mysql = require('mysql2');
+const config = require('../config.js');
 const getPerMonth = require('./getEventsMonth.js');
 
 const updater = async () => {
     const connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        database: 'event_lents',
-        password: ''
-    }).promise();
+        host: config.host,
+        user: config.user,
+        database: config.database,
+        password: config.password,
+      }).promise();
 
     let eventsParsed = await getPerMonth.all();
     let tempTitles = [];
