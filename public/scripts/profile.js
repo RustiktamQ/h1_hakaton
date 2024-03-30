@@ -64,8 +64,7 @@ async function checkToken(token) {
     return data.code == 1;
 }
 
-// let token = getCookie("token");
-let token = "3bfa3f7653c9918de81fa6120010d88d";
+let token = getCookie("token");
 async function checkAuthorization(token) {
     if (cookieExists("token")) {
         if (!(await checkToken(token))) {
@@ -104,6 +103,11 @@ async function getUserEvents(token) {
     return data;
 }
 
+async function getUserName(token) {
+    let userName = (await getUserInfo(token)).username;
+    return userName;
+}
+
 function parseDate(date) {
     let splitedDate = date.split(".");
     month = getRussianMonthName(splitedDate[1]);
@@ -132,8 +136,11 @@ async function renderPage(token) {
             container.appendChild(card);
         }
     } else {
-        container.innerHTML = "<h1 class='errorOutput'>Мероприятий не найдено</h1>";
+        container.innerHTML = "<h1 class='errorOutput'>Нет посещений</h1>";
     }
+
+    nameOfUser = await getUserName(token);
+    document.getElementById("userName").innerHTML = nameOfUser;
 }
 
 renderPage(token);
