@@ -95,6 +95,7 @@ header {
     background-color: var(--primary-hover);
 }
 .mobNavLink {
+    margin-left: 4px;
     font-family: "inter", sans-serif;
     font-size: 17px;
     font-weight: 600;
@@ -412,6 +413,9 @@ header {
     align-items: center;
     justify-content: space-between;
 }
+.cardTitle {
+    font-size: 16px;
+}
 .cardDate {
     margin-right: 3px;
     font-size: 16px;
@@ -435,6 +439,18 @@ header {
     body {
         overflow-x: hidden;
         overflow-y: auto;
+    }
+    .bottomInfo {
+        gap: 20px;
+    }
+    .cardTitle {
+        font-size: 14px;
+    }
+    .cardDate {
+        text-align: center;
+        margin-right: 0px;
+        font-size: 14px;
+        font-weight: 500;
     }
 }
 /* </Activities List> */
