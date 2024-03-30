@@ -21,11 +21,8 @@ userRouter.post('/register', urlencodedParser, async (req, res) => {
     let userResCheck = (await connection.query(sqlCheck, [username, password]))[0];
 
     if (userResCheck.length > 0) {
-        res.status(200).json({"message": "Такой пользователь уже зарегистрирован!", "code": -1});
-
-        setTimeout(() => {
-            res.redirect('/register');
-        }, 2500);
+        res.redirect('/register');
+        //res.status(200).json({"message": "Такой пользователь уже зарегистрирован!", "code": -1});
 
         return false;
     }
@@ -35,9 +32,10 @@ userRouter.post('/register', urlencodedParser, async (req, res) => {
     const sql = "INSERT INTO users(username, password, token) VALUES (?, ?, ?)";
     let userRes = await connection.query(sql, [username, password, token]);
     
-    res.status(200).json({"username": username, "password": password, "token": token});
-    connection.end();
+    res.cookie('token', token);
     res.redirect('/profile');
+    //res.status(200).json({"username": username, "password": password, "token": token});
+    connection.end();
 });
 
 userRouter.post('/login', urlencodedParser, async (req, res) => {
@@ -55,16 +53,13 @@ userRouter.post('/login', urlencodedParser, async (req, res) => {
     let userRes = (await connection.query(sql, [username, password]))[0][0];
 
     if (!userRes) {
-        res.status(400).json({"message": "Такой пользователь не найден!", "code": -2});
-
-        setTimeout(() => {
-            res.redirect('/login');
-        }, 2500);
+        res.redirect('/login');
+        //res.status(400).json({"message": "Такой пользователь не найден!", "code": -2});
 
         return false;
     }
 
-    res.status(200).json({"token": md5(userRes.username + userRes.password)});
+    //res.status(200).json({"token": md5(userRes.username + userRes.password)});
     res.cookie('token', md5(userRes.username + userRes.password));
     res.redirect('/profile');
 });
