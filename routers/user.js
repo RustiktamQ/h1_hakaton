@@ -15,7 +15,7 @@ userRouter.post('/register', urlencodedParser, async (req, res) => {
     }).promise();
       
     const username = req.body.username;
-    const password = req.body.password;
+    const password = md5(req.body.password);
 
     const sqlCheck = "SELECT * FROM `users` WHERE username = ? AND password = ?";
     let userResCheck = (await connection.query(sqlCheck, [username, password]))[0];
@@ -50,7 +50,7 @@ userRouter.post('/login', urlencodedParser, async (req, res) => {
     }).promise();
 
     const username = req.body.username;
-    const password = req.body.password;
+    const password = md5(req.body.password);
       
     const sql = "SELECT * FROM `users` WHERE username = ? AND password = ?";
     let userRes = (await connection.query(sql, [username, password]))[0][0];
