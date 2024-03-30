@@ -20,15 +20,33 @@
         <div class="navBar">
             <a href="#" class="navLink">Войти</a>
             <a href="#" class="profileButton">Регистрация</a>
+            <button class="mobileNavButton" onclick="openMobNav()"><i class='bx bx-menu'></i></button>
         </div>
     </header>
+    <div class="mobileHeader" id="mobileNav">
+        <div class="navBar">
+            <a href="#" class="mobNavLink">Активности</a>
+            <a href="#" class="mobNavLink">История</a>
+            <a href="#" class="mobNavLink">Рейтинг</a>
+        </div>
+        <div class="navBar">
+            <a href="#" class="mobNavLink">Войти</a>
+            <a href="#" class="mobProfileButton">Регистрация</a>
+        </div>
+    </div>
+    <script>
+        function openMobNav() {
+            let elem = document.getElementById("mobileNav");
+            elem.classList.toggle("opened");
+        }
+    </script>
 
     <section id="main" class="mainSection" data-aos="fade-up">
         <div class="previewPart">
             <div class="previewTop">
                 <div class="previewBlock"></div>
                 <div class="previewInformation">
-                    <h2 class="previewTitle">Сходка любителей мамашек Городской Парк # Part3 Тыща девятьсот чсорок пятый браво шесть антон сьеро альфа хром</h2>
+                    <h2 class="previewTitle">Сходка любителей Доты Городской Парк # Part3 Тыща девятьсот чсорок пятый браво шесть антон сьеро альфа хром</h2>
                     <div class="previewInfo">
                         <div class="previewCategory">Образовательная программа</div>
                         <div class="previewDate">12 Января 2024</div>

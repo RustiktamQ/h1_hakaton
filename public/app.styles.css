@@ -94,6 +94,85 @@ header {
 .profileButton:hover {
     background-color: var(--primary-hover);
 }
+.mobNavLink {
+    margin-left: 4px;
+    font-family: "inter", sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #666666;
+    transition: .33s;
+    border-radius: 12px;
+}
+.mobNavLink:hover {
+    color: #252525;
+}
+.mobNavLink.selected {
+    color: var(--primary-light);
+}
+.mobNavLink.selected:hover {
+    color: var(--primary-light-hover);
+}
+.mobProfileButton {
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: var(--primary);
+    border: 3px solid var(--primary-hover);
+    border-radius: 14px;
+    padding: 8px 12px;
+    transition: .28s;
+}
+.mobProfileButton:hover {
+    background-color: var(--primary-hover);
+}
+.mobileHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: .26s;
+    background-color: #ffffff;
+    max-height: 0px;
+    padding: 0;
+    overflow: hidden;
+}
+.mobileHeader.opened {
+    max-height: 400px;
+    padding: 24px;
+}
+.mobileHeader .navBar {
+    align-items: start;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: left;
+}
+.mobileNavButton {
+    background-color: transparent;
+    padding-top: 2px;
+    cursor: pointer;
+    color: #666666;
+    font-size: 36px;
+    display: none;
+}
+@media screen and (max-width: 1100px) {
+    .navLink {
+        display: none;
+    }
+    .navLink.selected {
+        display: block;
+    }
+    .profileButton {
+        display: none;
+    }
+    .mobileNavButton {
+        display: block;
+    }
+}
+@media screen and (min-width: 1100px) {
+    .mobileHeader.opened {
+        max-height: 0;
+        padding: 0;
+    }
+}
 /* </Header> */
 
 
@@ -110,6 +189,9 @@ header {
 }
 @media screen and (max-width: 1200px) {
     .mainSection {
+        margin: 0px;
+        border-radius: 0px;
+        padding: 24px;
         flex-direction: column;
         height: auto;
         gap: 24px;
@@ -216,6 +298,21 @@ header {
         width: 100%;
         height: auto;
     }
+    .previewTitle {
+        font-size: 22px;
+    }
+    .previewCategory {
+        font-size: 16px;
+    }
+    .previewDate {
+        font-size: 16px;
+    }
+    .visitButton {
+        font-size: 18px;
+    }
+    .detailsButton {
+        font-size: 18px;
+    }
     body {
         overflow-x: hidden;
         overflow-y: auto;
@@ -264,6 +361,7 @@ header {
 }
 .dayActivities {
     height: 100%;
+    min-height: 324px;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -315,6 +413,9 @@ header {
     align-items: center;
     justify-content: space-between;
 }
+.cardTitle {
+    font-size: 16px;
+}
 .cardDate {
     margin-right: 3px;
     font-size: 16px;
@@ -333,11 +434,23 @@ header {
 @media screen and (max-width: 1200px) {
     .activitiesList {
         width: 100%;
-        height: 500px;
+        height: auto;
     }
     body {
         overflow-x: hidden;
         overflow-y: auto;
+    }
+    .bottomInfo {
+        gap: 20px;
+    }
+    .cardTitle {
+        font-size: 14px;
+    }
+    .cardDate {
+        text-align: center;
+        margin-right: 0px;
+        font-size: 14px;
+        font-weight: 500;
     }
 }
 /* </Activities List> */
