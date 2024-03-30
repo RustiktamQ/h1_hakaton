@@ -214,7 +214,7 @@ header {
 .previewBlock {
     background-size: cover;
     background-position: center center;
-    background-image: url(/public/assets/fillerImage.png);
+    background-image: url(/assets/fillerImage.png);
     position:relative; 
     background-color: #252525;
     width: 100%;

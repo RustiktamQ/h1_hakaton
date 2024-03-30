@@ -1,19 +1,13 @@
 let container = document.getElementById("calendar");
 
-function sendGetRequest(number) {
-    let url = "http://127.0.0.1:5500/public/?day=" + number;
+async function sendGetRequest(number) {
+    const date = new Date();
+    let month = ('0' + (date.getMonth() + 1)).slice(-2);
+    let year = date.getFullYear();
+    let url = `http://localhost:3000/v1/getDay/${number}.${month}.${year}`;
 
-    fetch(url)
-        .then(response => {
-            if (response.ok) {
-                console.log("GET запрос отправлен успешно.");
-            } else {
-                console.error("Ошибка при отправке GET запроса:", response.statusText);
-            }
-        })
-        .catch(error => {
-            console.error("Ошибка при отправке GET запроса:", error);
-        });
+    let result = await fetch(url);
+    console.log(result.body)
 }
 
 function selectCircle(selectedIndex) {
