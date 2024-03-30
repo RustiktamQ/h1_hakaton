@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 30 2024 г., 13:14
+-- Время создания: Мар 30 2024 г., 18:27
 -- Версия сервера: 8.0.30
 -- Версия PHP: 7.2.34
 
@@ -68,6 +68,27 @@ INSERT INTO `events` (`id`, `title`, `category`, `date`, `image`, `url`) VALUES
 (25, 'Премьера. Пьяный «космонавт»', 'teatr_teatr', '30.03.2024', 'https://teatr-teatr.com/upload/webp/resize_cache/iblock/a5c/m68zrtk0t7c0w4r0hmvgr3khgpz23tmk/949_463_0/TOM_4507.webp', 'https://teatr-teatr.com/performances/premera-pyanyy-kosmonavt/?event=8961'),
 (26, 'Гастроли. Щелкунчик', 'teatr_teatr', '31.03.2024', 'https://teatr-teatr.com/upload/webp/resize_cache/iblock/2ea/a7plh2io61mhfu0ytkb29b22462msjzi/949_463_0/SHCH1.webp', 'https://teatr-teatr.com/performances/gastroli-shchelkunchik/?event=9124');
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `users`
+--
+
+CREATE TABLE `users` (
+  `id` int NOT NULL,
+  `username` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `visited_events` json DEFAULT NULL,
+  `token` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `visited_events`, `token`) VALUES
+(1, 'Mel1x', '123', '{\"events\": [\"8\", \"1\", \"2\", \"9\", \"7\", \"10 \"]}', '3bfa3f7653c9918de81fa6120010d88d');
+
 --
 -- Индексы сохранённых таблиц
 --
@@ -79,6 +100,12 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
@@ -87,6 +114,12 @@ ALTER TABLE `events`
 --
 ALTER TABLE `events`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT для таблицы `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

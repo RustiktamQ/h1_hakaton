@@ -51,4 +51,25 @@ userRouter.post('/login', urlencodedParser, async (req, res) => {
     res.status(200).json({"token": md5(userRes.username + userRes.password)});
 });
 
+userRouter.get('/getInfo/:token', async (req, res) => {
+    const connection = mysql.createConnection({
+        host: config.host,
+        user: config.user,
+        database: config.database,
+        password: config.password,
+    }).promise();
+
+    const token = req.params.token;
+
+    const sql = "SELECT * FROM users WHERE token = ?";
+    let userRes = (await connection.query(sql, [token]))[0][0];
+
+    if (!userRes) {
+        res.status(200).json({"message": "Пользователь не найден!", "code": -2})
+        return false;
+    }; 
+
+    res.status(200).json({"username": userRes.username, "visited_events": userRes.visited_events}); 
+});
+
 module.exports = userRouter;
