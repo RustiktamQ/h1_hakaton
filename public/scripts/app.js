@@ -54,7 +54,7 @@ async function sendGetRequest(number) {
     const date = new Date();
     let month = ('0' + (date.getMonth() + 1)).slice(-2);
     let year = date.getFullYear();
-    let url = `http://localhost:3000/v1/getDay/${number}.${month}.${year}`;
+    let url = `/v1/getDay/${number}.${month}.${year}`;
 
     let result = await fetch(url);
     let data = await result.json();
