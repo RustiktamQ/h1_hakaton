@@ -37,6 +37,7 @@ userRouter.post('/register', urlencodedParser, async (req, res) => {
     
     res.status(200).json({"username": username, "password": password, "token": token});
     connection.end();
+    res.redirect('/profile');
 });
 
 userRouter.post('/login', urlencodedParser, async (req, res) => {
@@ -64,6 +65,8 @@ userRouter.post('/login', urlencodedParser, async (req, res) => {
     }
 
     res.status(200).json({"token": md5(userRes.username + userRes.password)});
+    res.cookie('token', md5(userRes.username + userRes.password));
+    res.redirect('/profile');
 });
 
 userRouter.get('/getInfo/:token', async (req, res) => {
