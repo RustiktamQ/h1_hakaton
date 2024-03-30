@@ -66,7 +66,7 @@ userRouter.post('/login', urlencodedParser, async (req, res) => {
     //res.status(200).json({"token": md5(userRes.username + userRes.password)});
     const oneMonthInMilliseconds = 30 * 24 * 60 * 60 * 1000; 
 
-    res.cookie('token', token, {maxAge: oneMonthInMilliseconds});
+    res.cookie('token', md5(userRes.username + userRes.password), {maxAge: oneMonthInMilliseconds});
     res.redirect('/profile');
 });
 
