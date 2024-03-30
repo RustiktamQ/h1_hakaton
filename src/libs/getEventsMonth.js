@@ -2,9 +2,6 @@ const permKraiParser = require('../parsers/permKrai.js');
 const svobodaPermParser = require('../parsers/svobodaPerm.js');
 const teatrTeatrParser = require('../parsers/teatr_teatr.js');
 
-const currentDate = new Date();
-const currentMonth = currentDate.getMonth() + 1;
-
 async function getMonthPermKrai(currentMonth) {
     const eventsPerMonth = [];
     let perm = await permKraiParser(1);
@@ -19,7 +16,7 @@ async function getMonthPermKrai(currentMonth) {
         }
 
         const month = perm[i].date.split('.')[1];
-        if (month < currentMonth) break;
+        if (month < currentMonth && month != 1) break;
 
         if (month == currentMonth) {
             eventsPerMonth.push(perm[i]);
@@ -30,8 +27,6 @@ async function getMonthPermKrai(currentMonth) {
 
     return eventsPerMonth;
 }
-
-// getMonthPermKrai(currentMonth);
 
 async function getMonthSvoboda(currentMonth) {
     const eventsPerMonth = [];
@@ -49,12 +44,28 @@ async function getMonthSvoboda(currentMonth) {
     return eventsPerMonth;
 }
 
-// getMonthSvoboda(currentMonth);
-
 async function getMonthTeatrTeatr(currentMonth) {
     let teatrTeatr = await teatrTeatrParser('all', '0'+currentMonth);
 
     return teatrTeatr;
 }
 
-// getMonthTeatrTeatr(currentMonth);
+module.exports = {
+    permKrai: getMonthPermKrai,
+    svoboda: getMonthSvoboda,
+    teatrTeatr: getMonthTeatrTeatr,
+
+    all: async () => {
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth() + 1;
+
+        const permKrai = await getMonthPermKrai(currentMonth);
+        const svoboda = await getMonthSvoboda(currentMonth);
+        const teatrTeatr = await getMonthTeatrTeatr(currentMonth);
+
+        let allEvents = (await Promise.all([permKrai, svoboda, teatrTeatr])).flat();
+        const allEventsWithoutRepeat = [...new Set([...allEvents])];
+
+        return allEventsWithoutRepeat;
+    }
+}
