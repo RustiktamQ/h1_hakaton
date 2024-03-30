@@ -1,11 +1,14 @@
-const permKraiParser = require('./parsers/permKrai.js');
-const svobodaPermParser = require('./parsers/svobodaPerm.js');
-const teatrTeatrParser = require('./parsers/teatr_teatr.js');
+const express = require('express');
+const updater = require('./libs/updater.js');
+const router = require('./router/index.js');
 
-const start = async () => {
-    let perm = await permKraiParser(1);
+updater.startUpdaterPerDay();
 
-    console.log(perm);
-}
+const app = express();
+app.use('/v1', router);
 
-start();
+app.use('/', (_, res) => {
+    res.send('ok!');
+});
+
+app.listen(3000);

@@ -22,7 +22,7 @@ const updater = async () => {
     });
 
     
-    let eventsFromDB = (await connection.query("SELECT * FROM events_per_month"))[0];
+    let eventsFromDB = (await connection.query("SELECT * FROM events"))[0];
     let events = [];
 
     let flag
@@ -36,10 +36,12 @@ const updater = async () => {
         if (flag) events.push(parsed);
     });
 
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
 
     events.forEach((el) => {
-        let thisEvents = [el.title, el.category, el.date, el.image, el.url];
-        let sql = "INSERT INTO events_per_month(title, category, date, image, url) VALUES (?, ?, ?, ?, ?)";
+        let thisEvents = [el.title, el.category, el.date+`.${currentYear}`, el.image, el.url];
+        let sql = "INSERT INTO events(title, category, date, image, url) VALUES (?, ?, ?, ?, ?)";
      
         connection.query(sql, thisEvents, (err) => {
             if(err) console.log(err);
@@ -50,4 +52,10 @@ const updater = async () => {
     events = [];
 }
 
-updater();
+module.exports = {
+    updater: updater,
+    startUpdaterPerDay: function() {
+        const month = 24 * 60 * 60 * 1000;
+        setInterval(this.updater, month);
+    }
+};
