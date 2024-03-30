@@ -417,6 +417,7 @@ header {
 }
 .cardTitle {
     font-size: 16px;
+    max-width: calc(100% - 132px);
 }
 .cardDate {
     margin-right: 3px;
@@ -432,6 +433,15 @@ header {
 .dayActivities::-webkit-scrollbar-thumb {
   background: var(--primary-hover);
   border-radius: 4px;
+}
+.errorOutput {
+    font-size: 24px;
+    font-weight: 600;
+    font-family: "Rubik", sans-serif;
+    color: #666666;
+}
+.detailsWrapper {
+    width: 100%;
 }
 @media screen and (max-width: 1200px) {
     .activitiesList {
