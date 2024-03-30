@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 30 2024 г., 18:27
+-- Время создания: Мар 30 2024 г., 21:43
 -- Версия сервера: 8.0.30
 -- Версия PHP: 7.2.34
 
@@ -61,12 +61,12 @@ INSERT INTO `events` (`id`, `title`, `category`, `date`, `image`, `url`) VALUES
 (18, 'Интернет-продвижение в социальном предпринимательстве. Виды контента. О чем писать в соцсетях?', 'Вебинар', '06.03.2024', 'https://www.permkrai.ru/upload/iblock/83b/qsjel1l9wzaizrxn92x2va4on170wzmi/cropped.png', 'https://www.permkrai.ru/events/internet_prodvizhenie_v_sotsialnom_predprinimatelstve_vidy_kontenta_o_chem_pisat_v_sotssetyakh/'),
 (19, 'Интернет-продвижение в социальном предпринимательстве. Платные и бесплатные методы продвижения', 'Вебинар', '04.03.2024', 'https://www.permkrai.ru/upload/iblock/b8e/1jgpvj0c7tburkhado5b3oebq479yetl/cropped.png', 'https://www.permkrai.ru/events/internet_prodvizhenie_v_sotsialnom_predprinimatelstve_platnye_i_besplatnye_metody_prodvizheniya/'),
 (20, 'МОЙ ПЕРВЫЙ БИЗНЕС: с чего начать?', 'Деловая игра', '04.03.2024', 'https://www.permkrai.ru/upload/iblock/621/lna2bm080nuippkougtjinfpdvqvqqsj/cropped.png', 'https://www.permkrai.ru/events/moy_pervyy_biznes_s_chego_nachat/'),
-(21, 'День Рождения Свободы: Найк Борзов', 'svoboda_perm', '30.03.2024', 'https://svoboda-perm.ru/wp-content/uploads/2023/09/nb-gor-1024x515.jpg', 'https://svoboda-perm.ru/event/najk-borzov/'),
-(22, 'Экскурсия Театр-Театр', 'teatr_teatr', '30.03.2024', 'https://teatr-teatr.com/upload/webp/resize_cache/iblock/14a/61zaeqg0rbx091cvrxkciaueu51593vw/949_463_0/1cdfc4c50329e6d578ef2b0dd610a5b1.webp', 'https://teatr-teatr.com/performances/ekskursiya-teatr-teatr/?event=9084'),
-(23, 'Гастроли. Восемь женщин', 'teatr_teatr', '30.03.2024', 'https://teatr-teatr.com/upload/webp/resize_cache/iblock/218/fama1f55ghchwpiwd606uauym1bittzs/949_463_0/8-zhenshchin_1920kh1284_glavnaya-banner.webp', 'https://teatr-teatr.com/performances/gastroli-vosem-zhenshchin/?event=9114'),
-(24, 'Гастроли. Зойкина квартира', 'teatr_teatr', '30.03.2024', 'https://teatr-teatr.com/upload/webp/resize_cache/iblock/3c3/kbm4go9jmusfliojv2itfaj38abfn8xt/949_463_0/xvx2mj4yftfu8o5nj2y2xu080msxx8b6.webp', 'https://teatr-teatr.com/performances/gastroli-zoykina-kvartira/?event=8921'),
-(25, 'Премьера. Пьяный «космонавт»', 'teatr_teatr', '30.03.2024', 'https://teatr-teatr.com/upload/webp/resize_cache/iblock/a5c/m68zrtk0t7c0w4r0hmvgr3khgpz23tmk/949_463_0/TOM_4507.webp', 'https://teatr-teatr.com/performances/premera-pyanyy-kosmonavt/?event=8961'),
-(26, 'Гастроли. Щелкунчик', 'teatr_teatr', '31.03.2024', 'https://teatr-teatr.com/upload/webp/resize_cache/iblock/2ea/a7plh2io61mhfu0ytkb29b22462msjzi/949_463_0/SHCH1.webp', 'https://teatr-teatr.com/performances/gastroli-shchelkunchik/?event=9124');
+(21, 'День Рождения Свободы: Найк Борзов', 'Концерт', '30.03.2024', 'https://svoboda-perm.ru/wp-content/uploads/2023/09/nb-gor-1024x515.jpg', 'https://svoboda-perm.ru/event/najk-borzov/'),
+(22, 'Экскурсия Театр-Театр', 'Премьера', '30.03.2024', 'https://teatr-teatr.com/upload/webp/resize_cache/iblock/14a/61zaeqg0rbx091cvrxkciaueu51593vw/949_463_0/1cdfc4c50329e6d578ef2b0dd610a5b1.webp', 'https://teatr-teatr.com/performances/ekskursiya-teatr-teatr/?event=9084'),
+(23, 'Гастроли. Восемь женщин', 'Премьера', '30.03.2024', 'https://teatr-teatr.com/upload/webp/resize_cache/iblock/218/fama1f55ghchwpiwd606uauym1bittzs/949_463_0/8-zhenshchin_1920kh1284_glavnaya-banner.webp', 'https://teatr-teatr.com/performances/gastroli-vosem-zhenshchin/?event=9114'),
+(24, 'Гастроли. Зойкина квартира', 'Премьера', '30.03.2024', 'https://teatr-teatr.com/upload/webp/resize_cache/iblock/3c3/kbm4go9jmusfliojv2itfaj38abfn8xt/949_463_0/xvx2mj4yftfu8o5nj2y2xu080msxx8b6.webp', 'https://teatr-teatr.com/performances/gastroli-zoykina-kvartira/?event=8921'),
+(25, 'Премьера. Пьяный «космонавт»', 'Премьера', '30.03.2024', 'https://teatr-teatr.com/upload/webp/resize_cache/iblock/a5c/m68zrtk0t7c0w4r0hmvgr3khgpz23tmk/949_463_0/TOM_4507.webp', 'https://teatr-teatr.com/performances/premera-pyanyy-kosmonavt/?event=8961'),
+(26, 'Гастроли. Щелкунчик', 'Премьера', '31.03.2024', 'https://teatr-teatr.com/upload/webp/resize_cache/iblock/2ea/a7plh2io61mhfu0ytkb29b22462msjzi/949_463_0/SHCH1.webp', 'https://teatr-teatr.com/performances/gastroli-shchelkunchik/?event=9124');
 
 -- --------------------------------------------------------
 
@@ -81,13 +81,6 @@ CREATE TABLE `users` (
   `visited_events` json DEFAULT NULL,
   `token` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Дамп данных таблицы `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`, `visited_events`, `token`) VALUES
-(1, 'Mel1x', '123', '{\"events\": [\"8\", \"1\", \"2\", \"9\", \"7\", \"10 \"]}', '3bfa3f7653c9918de81fa6120010d88d');
 
 --
 -- Индексы сохранённых таблиц
@@ -119,7 +112,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
