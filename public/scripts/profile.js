@@ -116,6 +116,21 @@ function parseDate(date) {
     return date;
 }
 
+function sanitizeString(input) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#x27;',
+    "/": '&#x2F;'
+  };
+  
+  const reg = /[&<>"'/]/ig;
+  
+  return input.replace(reg, (match) => (map[match]));
+}
+
 async function renderPage(token) {
     let userData = await getUserEvents(token);
     let container = document.getElementById("cardsList");
@@ -130,7 +145,7 @@ async function renderPage(token) {
                                   <a href="${userData[i].url}" target="_blank" class="cardLink"><i class='bx bx-link-external'></i></a>
                               </div>
                               <div class="bottomInfo">
-                                  <div class="cardTitle">${userData[i].title}</div>
+                                  <div class="cardTitle">${sanitizeString(userData[i].title)}</div>
                                   <div class="cardDate">${parsedDate}</div>
                               </div>`;
             container.appendChild(card);
