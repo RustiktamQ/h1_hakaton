@@ -49,7 +49,7 @@ function sanitizeString(input) {
 async function sendGetRequest() {
     let container = document.getElementById("cardsList");
 
-    let url = `http://localhost:3000/v1/getExpired`;
+    let url = `/v1/getExpired`;
 
     let result = await fetch(url);
     let data = await result.json();
