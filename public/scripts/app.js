@@ -48,7 +48,7 @@ function sanitizeString(input) {
 
 function showPreview(banner, title, category, date, url, id) {
     let bannerWindow = document.getElementById("previewBanner");
-    let titlePlace = sanitizeString(document.getElementById("previewTitle"));
+    let titlePlace = document.getElementById("previewTitle");
     let categoryPlace = document.getElementById("previewCategory");
     let datePlace = document.getElementById("previewDate");
     let urlPlace = document.getElementById("previewLink");
@@ -58,7 +58,7 @@ function showPreview(banner, title, category, date, url, id) {
         banner = "/assets/fillerImage.png";
     }
     bannerWindow.style.backgroundImage = `url(${banner})`;
-    titlePlace.innerText = title;
+    titlePlace.innerText = sanitizeString(title);
     categoryPlace.innerText = category;
     datePlace.innerText = date;
     urlPlace.href = url;
