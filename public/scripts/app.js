@@ -88,7 +88,7 @@ async function sendGetRequest(number) {
                                   <a href="${data[i].url}" target="_blank" class="cardLink"><i class='bx bx-link-external'></i></a>
                               </div>
                               <div class="bottomInfo">
-                                  <div class="cardTitle">${data[i].title}</div>
+                                  <div class="cardTitle">${sanitizeString(data[i].title)}</div>
                                   <div class="cardDate">${parsedDate}</div>
                               </div>`;
             container.appendChild(card);
