@@ -58,7 +58,7 @@ function showPreview(banner, title, category, date, url, id) {
         banner = "/assets/fillerImage.png";
     }
     bannerWindow.style.backgroundImage = `url(${banner})`;
-    titlePlace.innerText = sanitizeString(title);
+    titlePlace.innerHTML = sanitizeString(title);
     categoryPlace.innerText = category;
     datePlace.innerText = date;
     urlPlace.href = url;
