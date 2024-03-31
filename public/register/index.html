@@ -93,16 +93,14 @@
                 submitButton.setAttribute('disabled', 'disabled');
             }
 
-            if (!checkLogin() && (loginInput.value.trim().length > 3)) {
-                output.innerHTML = 'Логин не должен содержать спецсимволов и цифр';
-            } else {
-                output.innerHTML = '';
-            }
-
             if (!checkPassword() && (fpasswordInput.value.trim().length >= 6)) {
                 output.innerHTML = 'Пароли должны совпадать';
             } else {
-                output.innerHTML = '';
+                if (!checkLogin() && (loginInput.value.trim().length > 3)) {
+                    output.innerHTML = 'Логин не должен содержать спецсимволов и цифр';
+                } else {
+                    output.innerHTML = '';
+                }
             }
         }
     </script>
