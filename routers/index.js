@@ -33,6 +33,7 @@ eventRouter.get('/getDay/:date', async (req, res) => {
 
   res.status(200).json(eventsPerDay);
   connection.end();
+  return;
 });
 
 eventRouter.get('/getExpired', async (req, res) => {
@@ -55,6 +56,7 @@ eventRouter.get('/getExpired', async (req, res) => {
 
   res.status(200).json(eventsExpired);
   connection.end();
+  return;
 });
 
 eventRouter.post('/visit/:id', urlencodedParser, async (req, res) => {
@@ -73,6 +75,7 @@ eventRouter.post('/visit/:id', urlencodedParser, async (req, res) => {
 
   if (resultCheck.length < 1) {
     res.status(404).json({"message": "Такого события нету!", "code": -2});
+    connection.end();
     return false;
   }
 
@@ -89,6 +92,7 @@ eventRouter.post('/visit/:id', urlencodedParser, async (req, res) => {
       resultVisited.events.push(idEvent);
     } else {
       res.status(300).json({"message": "Вы уже посещали это событие!", "code": -3});
+      connection.end();
       return false;
     }
 
@@ -99,6 +103,8 @@ eventRouter.post('/visit/:id', urlencodedParser, async (req, res) => {
   let result = (await connection.query(sql, [JSON.stringify(visitedEvents), token]))[0];
 
   res.status(200).json({"message": "Вы успешно подписались на событие!", "code": 1});
+  connection.end();
+  return;
 });
 
 eventRouter.get('/getEvents/:manyId', async (req, res) => {
@@ -121,6 +127,8 @@ eventRouter.get('/getEvents/:manyId', async (req, res) => {
 
   const visitedEventsF = visitedEvents.flat();
   res.status(200).json(visitedEventsF);
+  connection.end();
+  return;
 });
 
 module.exports = eventRouter;
