@@ -31,6 +31,21 @@ function parseDate(date) {
     return date;
 }
 
+function sanitizeString(input) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#x27;',
+    "/": '&#x2F;'
+  };
+  
+  const reg = /[&<>"'/]/ig;
+  
+  return input.replace(reg, (match) => (map[match]));
+}
+
 async function sendGetRequest() {
     let container = document.getElementById("cardsList");
 
@@ -51,7 +66,7 @@ async function sendGetRequest() {
                                   <a href="${data[i].url}" target="_blank" class="cardLink"><i class='bx bx-link-external'></i></a>
                               </div>
                               <div class="bottomInfo">
-                                  <div class="cardTitle">${data[i].title}</div>
+                                  <div class="cardTitle">${sanitizeString(data[i].title)}</div>
                                   <div class="cardDate">${parsedDate}</div>
                               </div>`;
             container.appendChild(card);
