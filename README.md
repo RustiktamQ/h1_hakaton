@@ -6,13 +6,24 @@
 ## Технологии
 
 - MySQL
-
 - NodeJS
+- HTML + CSS + Js
 
+## Installation
 
-## Содействие
+Установка проекта с помощью npm
 
-Если вы нашли какую-то ошибку пожалуйста отправте нам баг-репорт!
+Загрузка репозитория
+```bash
+  git clone https://github.com/RustiktamQ/h1_hakaton/
+  cd h1_hakaton/
+```
+
+Установка зависимостей и запуск
+```bash
+  npm install
+  npm run start
+```
 
 
 
@@ -23,7 +34,3 @@
 - Иван Ведров — Front-End Engineer
 - Рустам Рахмангулов — Back-End Engineer
 - Илья Петров — Back-End Engineer
-## Отзывы
-
-Если вы хотите оставить отзыв пишете нам на почту johnbackets65226@gmail.com
-
