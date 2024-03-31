@@ -31,9 +31,24 @@ function parseDate(date) {
     return date;
 }
 
+function sanitizeString(input) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#x27;',
+    "/": '&#x2F;'
+  };
+  
+  const reg = /[&<>"'/]/ig;
+  
+  return input.replace(reg, (match) => (map[match]));
+}
+
 function showPreview(banner, title, category, date, url, id) {
     let bannerWindow = document.getElementById("previewBanner");
-    let titlePlace = document.getElementById("previewTitle");
+    let titlePlace = sanitizeString(document.getElementById("previewTitle"));
     let categoryPlace = document.getElementById("previewCategory");
     let datePlace = document.getElementById("previewDate");
     let urlPlace = document.getElementById("previewLink");
